@@ -36,6 +36,7 @@ nav li {
 
 #main_list {
     float: left;
+    display: block;
     text-align: left;
     background-color: rgb(89, 0, 255);
     width: 350px;
@@ -101,17 +102,16 @@ nav li {
 #display_result {
     background-color: hsla(40, 100%, 50%, 1);
     text-align: center;
+
+    margin-left: 400px;
+
+
 }
 
 #display_result p {
-    background-color: rgb(255, 140, 87);
-    width: 800px;
-    height: 453px;
-    text-align: center;
-    position: relative;
-    left: 480px;
-
-    font-size: 16pt;
+    background-color: violet;
+    font-size: 18px;
+    padding: 20px 50px;
 
 }
 

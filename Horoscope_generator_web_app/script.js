@@ -12,7 +12,6 @@ for (let i = 0; i < astrologicalSigns.childNodes.length; i++) {
 
 const returnResult = (sign_id) => {
     document.getElementById("result").innerText = generateHoroscope(sign_id); //send the generated message to the user
-    document.getElementById("result").style.backgroundColor = 'violet';
+    
 }
 
-//get astrological sign category based on the click event for a certain button.
