@@ -1,14 +1,34 @@
 let AstrologicalSign = ""; //global variable to store astrological signs
 let category = ""; //global variable to store the category of astrological sign entered
 
+
+//here, we set three possible formats an astrological horoscope can take
+function generateHoroscope(input) {
+    AstrologicalSign = input;
+    categorizeAstrologicalSign(input);
+
+
+    const value = generateRandomNumberRange(1, 3); //choses which message format the horoscope will take.
+    if(value === 1) {
+        return message1();
+    }
+    if(value === 2) {
+        return message2();
+    }
+    if(value === 3) {
+        return message3();
+    }
+}
+
+
 //function to categorize and validate the initial input, and to generate the corresponding message.
-categorizeAstrologicalSign = (input) => {
+function categorizeAstrologicalSign(input){
     
     input = input.toLowerCase(); //converts all signs to lowercase
 
     //astrological signs are categorized into the classic fire, water, earth, and air categories
     
-   if(input === "aries" || input === "leo" || input === "sagittarius") {
+   if(input === 'aries' || input === "leo" || input === "sagittarius") {
     category = "fire";
     return true; //true is returned if the input is valid
    } 
@@ -24,7 +44,6 @@ categorizeAstrologicalSign = (input) => {
     category = "air";
     return true;
    } else {
-       console.log("Check your spelling, please try again")
        return false;
    }
 }
@@ -36,19 +55,7 @@ generateRandomNumberRange = (start, end) => {
 }
 
 
-//here, we set three possible formats an astrological horoscope can take
-generateHoroscope = () => {
-    const value = generateRandomNumberRange(1, 3); //choses which message format the horoscope will take.
-    if(value === 1) {
-        return message1();
-    }
-    if(value === 2) {
-        return message2();
-    }
-    if(value === 3) {
-        return message3();
-    }
-}
+
 
 //object to store possible words based on the category of astrological sign
 const words = {
@@ -59,7 +66,7 @@ const words = {
         earth: ["practical knowledge", "attention to detail", "consistency"]
     },
     
-    goals: ["deepest desires", "dreams", "relationship goals", "greatest passion"]
+    goals: ["deepest desires", "dreams", "relationship goals", "greatest passion","professional goals"]
 };
 
 //finds a random trait to add to the horoscope based on the category of the astrological sign and the words object.
@@ -107,21 +114,3 @@ const message3 = () => {
 
 
 
-
-
-
-
-
-//          All code below are inputs and outputs to and from the terminal (using the node.js environment).
-const prompt = require('prompt-sync')();
-
-console.log("\tHoroscope finder for your astrological sign: ")
-console.log("The 12 possible astrological signs are spelled:\n Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagittarius, Capricorn, Aquarius and Pisces.\n\n");
-
-//try inputing as long as the input isn't valid
-do {
-    AstrologicalSign = prompt('Enter your astrological sign: ');
-    
-} while (!categorizeAstrologicalSign(AstrologicalSign))
-//testing final output
-console.log(generateHoroscope() + "\n\n");
