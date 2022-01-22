@@ -119,10 +119,10 @@ nav li {
 }
 
 #display_result p {
-    background-color: violet;
+    background-color: white;
     font-size: 20pt;
     padding: 20px 30px;
-
+    display: none;
 }
 
 
