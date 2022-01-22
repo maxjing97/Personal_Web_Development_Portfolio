@@ -1,4 +1,3 @@
-let AstrologicalSign = '""'; // global variable to store astrological signs
 let category = ''; // global variable to store the category of astrological sign entered
 
 
@@ -16,7 +15,6 @@ const words = {
 
 // here, we set three possible formats an astrological horoscope can take
 function generateHoroscope(input) {
-    AstrologicalSign = input;
     categorizeAstrologicalSign(input);
 
 

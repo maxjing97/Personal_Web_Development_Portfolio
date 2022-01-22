@@ -4,8 +4,8 @@ const astrologicalSigns = document.getElementById("astrological_signs");
 //generate click event for each button.
 for (let i = 0; i < astrologicalSigns.childNodes.length; i++) {
     let element = astrologicalSigns.childNodes[i]; //set the element at each iteration to be the sign at a certain index in the list of nodes
-    element.addEventListener('click', () => { //set the sign to be the current element's id;
-        returnResult(element.id);  //trigger the function to change the text on the screen based on the clicked button's id;
+    element.addEventListener('click', (e) => { //set the sign to be the current element's id;
+        returnResult(e.target.id);  //trigger the function to change the text on the screen based on the clicked button's id;
     });
 }
 
