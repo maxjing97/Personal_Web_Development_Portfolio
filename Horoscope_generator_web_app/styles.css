@@ -4,16 +4,28 @@ body {
     background-color:rgb(43, 174, 226);
 }
 
+header {
+    background-color: rgb(57, 32, 223);
+    height: 100px;
+    margin-top: 0;
+}
+
+header h1 {
+    font-size: 30pt;
+    color: #C5DF20;
+    padding-top: 20px;
+    margin-top: 0;
+}
 
 .introduction {
     display: block;
     margin: 10px auto;
 }
 
-.introduction h1 {
-    font-size: 24pt;
+.introduction h2 {
+    font-size: 25pt;
     text-align: center;
-    font-size: 50px;
+    color: #cecece;
 }
 
 
@@ -88,15 +100,11 @@ nav li {
     border: black solid 1px;
     border-radius: 50%;
 
-    
-    
-
-
 }
 
 #main_list li:hover {
     background-color: rgb(255, 255, 255);
-    color: white;
+    color: black;
 }
 
 #display_result {
@@ -104,14 +112,16 @@ nav li {
     text-align: center;
 
     margin-left: 400px;
+}
 
-
+#display_result h1 {
+    padding-top: 15px;
 }
 
 #display_result p {
     background-color: violet;
-    font-size: 18px;
-    padding: 20px 50px;
+    font-size: 20pt;
+    padding: 20px 30px;
 
 }
 

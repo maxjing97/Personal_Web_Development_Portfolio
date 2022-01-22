@@ -2,6 +2,18 @@ let AstrologicalSign = '""'; // global variable to store astrological signs
 let category = ''; // global variable to store the category of astrological sign entered
 
 
+//object to store possible words based on the category of astrological sign
+const words = {
+    traits: {
+        water: ["imagination", "emotional intelligence", "inventiveness"],
+        fire: ["bravery", "confidence", "independent thinking"],
+        air: ["social skills", "intelligence", "learning skills"],
+        earth: ["practical knowledge", "attention to detail", "consistency"]
+    },
+    
+    goals: ["deepest desires", "dreams", "relationship goals", "greatest passion","professional goals"]
+};
+
 // here, we set three possible formats an astrological horoscope can take
 function generateHoroscope(input) {
     AstrologicalSign = input;
@@ -57,17 +69,7 @@ generateRandomNumberRange = (start, end) => {
 
 
 
-//object to store possible words based on the category of astrological sign
-const words = {
-    traits: {
-        water: ["imagination", "emotional intelligence", "inventiveness"],
-        fire: ["bravery", "confidence", "independent thinking"],
-        air: ["social skills", "intelligence", "learning skills"],
-        earth: ["practical knowledge", "attention to detail", "consistency"]
-    },
-    
-    goals: ["deepest desires", "dreams", "relationship goals", "greatest passion","professional goals"]
-};
+
 
 //finds a random trait to add to the horoscope based on the category of the astrological sign and the words object.
 generateRandomWords = () => {
@@ -98,8 +100,8 @@ const message1 = () => {
 
 //2nd possible message function
 const message2 = () => {
-    return `Despite your disappointments from last week, this week, your ${generateRandomWords()[0]} will allow you to
-    fulfill, at least partially, your ${generateRandomWords()[1]}.`;
+    return `Despite your disappointments from last week, this week, your ${generateRandomWords()[0]} 
+    will allow you to fulfill, at least partially, your ${generateRandomWords()[1]}.`;
 };
 
 //3rd possible message function
