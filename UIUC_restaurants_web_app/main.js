@@ -51,6 +51,7 @@ const displaydetails = (element, restaurantObject) => {
      //add event listener to show more detailed info of a restaurant when clicked.
     element.addEventListener('click', (event) => {
         let restaurant = event.target; //this is the restaurant clicked in the search bar.
+        search_bar.value = ''; //clears the text in the search bar when the particular restaurant is clicked.
         results_section.innerHTML = restaurant.id + "<br>"; //changes the list of restaurants displayed so that only the restaurant displayed in detail is shown
         results_section.style.color = 'aqua'; //change the color of the only displayed restaurant after the click
         detailed_results_section.style.display ='block'; //show the detailed box
