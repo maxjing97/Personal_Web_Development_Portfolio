@@ -31,9 +31,9 @@ const displayResults = (searchString) => {
     //add a event listener to redirect the user to detailed info if clicked
     //also add an event listener to color the element if hovered:
     for (let i = 0; i < RestaurantObjects.length; i++) {
-        let newRestaurantElement = document.createElement('option');
+        let newRestaurantElement = document.createElement('span');
         newRestaurantElement.innerHTML = RestaurantObjects[i].Name + "<br>"; //set the result to be presented as the restaurant name
-        newRestaurantElement.id = RestaurantObjects[i].Name; //assign an id.
+        newRestaurantElement.id = RestaurantObjects[i].Name; //assign an id
         
         //calls function that adds event listener that allows more detailed infomation to be shown
         displaydetails(newRestaurantElement, RestaurantObjects[i]);
