@@ -55,7 +55,7 @@ article {
 #main .search-input {
     text-align: center;
     position: relative;
-    right: 40px;
+    right: 38px;
 }
 
 #main label {
@@ -66,6 +66,7 @@ article {
 }
 
 #search-bar {
+    box-sizing: border-box;
     display: inline-block;
     width: 30%;
     height: 30px;
