@@ -1,0 +1,1 @@
+Web app showing all restaurants in range of a certain location using an API.
