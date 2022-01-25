@@ -73,7 +73,7 @@ const displaydetails = (element, restaurantObject) => {
 
 
         //final text displayed to the user;
-        detailed_results_section.innerHTML = "Detailed Restaurant Info: <br>"+
+        detailed_results_section.innerHTML = "Detailed Information for "+ restaurantObject.Name +":<br>"+
         cuisineInfo +
         websiteInfo;  //adds the restaurant website;
     });

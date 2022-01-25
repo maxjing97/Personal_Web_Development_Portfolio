@@ -35,10 +35,13 @@
     <section id='main'> <!--Semantic element-->    
         
         <p>This website provides information about restaurants that are around the Urbana-Champaign area and close to UIUC (the University of Illinois at Urbana-Champaign).</p>
-        <h1 class="centered">Search Here for restaurants by typing in a restaurant's name or cuisine type</h1>
-        <h1 class='centered'>Click a restaurant for detailed info</h1>
+        <h1>Search for restaurants by typing in a restaurant's name or cuisine type<br>
+        Click a restaurant for detailed info</h1>
         
-        <input type='text' name='search' id='search-bar' placeholder="search here..."> <!--search bar input-->
+        <div class='search-input'>
+            <label for='search-bar'>Search:</label>
+            <input type='text' name='search' id='search-bar' placeholder="search here..."> <!--search bar input-->
+        </div>
         <div id="search-results"></div> <!--search results to be linked-->
         <div id="detailed-results"></div> <!--detailed results displayed whenever a search element is clicked:-->
         <!--search and link to a database of restaurants (simplified using a csv file) is established using code involving javascript and json-->

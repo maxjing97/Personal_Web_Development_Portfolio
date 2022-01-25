@@ -16,10 +16,6 @@ header {
 
 }
 
-.centered{
-    text-align: center;
-}
-
 #title-info {
     font-size: 19px;
 }
@@ -53,6 +49,30 @@ article {
 
 #main {
     text-align: center;
+    margin: 0 auto;
+}
+
+#main .search-input {
+    text-align: center;
+    position: relative;
+    right: 40px;
+}
+
+#main label {
+    text-align: center;
+    font-size: 20px;
+
+    color: red;
+}
+
+#search-bar {
+    display: inline-block;
+    width: 30%;
+    height: 30px;
+    text-align: center;
+    font-size: 20px;
+    margin: 0 auto;
+    position: relative;
 }
 
 #search-results {
@@ -77,13 +97,7 @@ article {
     overflow: auto;
 }
 
-#search-bar {
-    width: 30%;
-    height: 30px;
-    text-align: center;
-    font-size: 20px;
-    margin: 30px;
-}
+
 
 #scene {
     border-style: solid;
