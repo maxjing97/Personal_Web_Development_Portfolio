@@ -63,6 +63,8 @@ article {
     margin-bottom: 20px;
     padding: 0;
     width: 30%;
+    max-height: 200px;
+    overflow: auto; 
 }
 
 #detailed-results {
@@ -72,6 +74,7 @@ article {
     margin: 0 auto;
     margin-bottom: 10px;
     display: none;
+    overflow: auto;
 }
 
 #search-bar {

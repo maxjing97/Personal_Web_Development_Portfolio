@@ -20,7 +20,7 @@ search_bar.addEventListener('keyup', (e) => {
 //function calls that adds calls function to display the research and to add key event listeners.
 const displayResults = (searchString) => {
     clearAll(); //calls function to clear search bar after each new search
-    search_bar.style.marginBottom = "0px";//displays search bar styling
+    search_bar.style.marginBottom = "0px";//search results box styling
 
     //calls the search function to return the array of matching restaurant objects
     let RestaurantObjects = search(searchString);
@@ -57,10 +57,9 @@ const displaydetails = (element, restaurantObject) => {
 
 
         //text displayed
-        detailed_results_section.innerHTML = "Detailed Restaurant Info: <br>"+ 
-        "Restaurant name: "+ restaurantObject.Name + "<br>" + 
-        "Cuisine: " + restaurantObject.Cuisine; 
-        "Website: ";
+        detailed_results_section.innerHTML = "Detailed Restaurant Info: <br>"+
+        "Cuisine Type: " + restaurantObject.Cuisine.toUpperCase() + "<br>" +
+        "Website: " + restaurantObject.Website + "<br>";  //adds the restaurant website;
     });
 }
 
