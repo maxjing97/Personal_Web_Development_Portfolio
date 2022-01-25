@@ -12,29 +12,31 @@ search_bar.addEventListener('keyup', (e) => {
     if (searchString.length === 0) {
         clearAll();
     } else {
-        displayResults();
+        displayResults(searchString); //passes in the function into the display results part
     }
     
 });
 
 //function calls that adds calls function to display the research and to add key event listeners.
-const displayResults = () => {
+const displayResults = (searchString) => {
     clearAll(); //calls function to clear search bar after each new search
     search_bar.style.marginBottom = "0px";//displays search bar styling
 
-    let names = ['example1', 'example2', 'example3'];
+    //calls the search function to return the array of matching restaurant objects
+    let RestaurantObjects = search(searchString);
+    
 
     //iterate through all values of the results
     //add new elements representing each restaurant
     //add a event listener to redirect the user to detailed info if clicked
     //also add an event listener to color the element if hovered:
-    for (let i = 0; i < names.length; i++) {
+    for (let i = 0; i < RestaurantObjects.length; i++) {
         let newRestaurantElement = document.createElement('option');
-        newRestaurantElement.innerHTML = names[i] + "<br>";
-        newRestaurantElement.id = names[i]; //assign an id.
+        newRestaurantElement.innerHTML = RestaurantObjects[i].Name + "<br>"; //set the result to be presented as the restaurant name
+        newRestaurantElement.id = RestaurantObjects[i].Name; //assign an id.
         
         //calls function that adds event listener that allows more detailed infomation to be shown
-        displaydetails(newRestaurantElement);
+        displaydetails(newRestaurantElement, RestaurantObjects[i]);
         //calls function to add events that give the hover effect
         hoverEffect(newRestaurantElement);
 
@@ -44,7 +46,8 @@ const displayResults = () => {
 }
 
 // function to display details of a restaurant when clicked in the search bar.
-const displaydetails = (element) => {
+//requires the restaurant object to be passed in order to show restaurant details.
+const displaydetails = (element, restaurantObject) => {
      //add event listener to show 
     element.addEventListener('click', (event) => {
         let restaurant = event.target; //this is the restaurant clicked in the search bar.
@@ -55,7 +58,9 @@ const displaydetails = (element) => {
 
         //text displayed
         detailed_results_section.innerHTML = "Detailed Restaurant Info: <br>"+ 
-        "Restaurant name: "+ restaurant.id + "<br> year founded-whatever"; 
+        "Restaurant name: "+ restaurantObject.Name + "<br>" + 
+        "Cuisine: " + restaurantObject.Cuisine; 
+        "Website: ";
     });
 }
 
