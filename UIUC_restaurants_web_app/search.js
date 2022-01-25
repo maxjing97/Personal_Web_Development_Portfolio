@@ -8,7 +8,6 @@ const restaurantsJSON = loadData();
 //get the search string and call the function to display a list of restaurants.
 search_bar.addEventListener('keyup', (e) => {
     let searchString = e.target.value; //returns the value put into the search string
-    console.log(searchString.length)
     //if the searchString is empty, call the clear function
     if (searchString.length === 0) {
         clearAll();
@@ -46,11 +45,14 @@ const displayResults = () => {
 
 // function to display details of a restaurant when clicked in the search bar.
 const displaydetails = (element) => {
-    //show only the restaurant displayed in the search bar
-    detailed_results_section.style.display ='block'; //show the detailed box
+     //add event listener to show 
     element.addEventListener('click', (event) => {
         let restaurant = event.target; //this is the restaurant clicked in the search bar.
-        
+        results_section.innerHTML = restaurant.id + "<br>"; //changes the list of restaurants displayed so that only the restaurant displayed in detail is shown
+        results_section.style.color = 'aqua'; //change the color of the only displayed restaurant after the click
+        detailed_results_section.style.display ='block'; //show the detailed box
+
+
         //text displayed
         detailed_results_section.innerHTML = "Detailed Restaurant Info: <br>"+ 
         "Restaurant name: "+ restaurant.id + "<br> year founded-whatever"; 
@@ -74,5 +76,6 @@ const clearAll = () => {
     results_section.innerHTML =""; //remove all the html in the results section
     detailed_results_section.innerHTML=""; //remove all the html in the detailed display section.
     detailed_results_section.style.display='none'; //hide the detailed results selection.
+    results_section.style.color = 'white'; //changes default text color to white.
 }
 
