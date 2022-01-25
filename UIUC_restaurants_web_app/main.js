@@ -48,18 +48,34 @@ const displayResults = (searchString) => {
 // function to display details of a restaurant when clicked in the search bar.
 //requires the restaurant object to be passed in order to show restaurant details.
 const displaydetails = (element, restaurantObject) => {
-     //add event listener to show 
+     //add event listener to show more detailed info of a restaurant when clicked.
     element.addEventListener('click', (event) => {
         let restaurant = event.target; //this is the restaurant clicked in the search bar.
         results_section.innerHTML = restaurant.id + "<br>"; //changes the list of restaurants displayed so that only the restaurant displayed in detail is shown
         results_section.style.color = 'aqua'; //change the color of the only displayed restaurant after the click
         detailed_results_section.style.display ='block'; //show the detailed box
 
-
+        
         //text displayed
+        let cuisineInfo = ''; //stores the cuisine info
+        let websiteInfo = ''; //stores the website info
+        //if cuisine or website info is avaiable in the restaurant object, reassign.
+        if (restaurantObject.Cuisine.length > 1) {
+            cuisineInfo = "Cuisine Type: " + restaurantObject.Cuisine.toUpperCase() + "<br>";
+        }
+        if (restaurantObject.Website.length > 1) {
+            websiteInfo = "Website: <a href=\"" + restaurantObject.Website + "\">link<a>"; //adds a clickable link
+        }
+        //if both fields do not have info, print: there is no more information at this time.
+        if (restaurantObject.Cuisine.length < 1 && restaurantObject.Website.length < 1) {
+            websiteInfo = 'No more information is available here at this time. <br>'
+        }
+
+
+        //final text displayed to the user;
         detailed_results_section.innerHTML = "Detailed Restaurant Info: <br>"+
-        "Cuisine Type: " + restaurantObject.Cuisine.toUpperCase() + "<br>" +
-        "Website: " + restaurantObject.Website + "<br>";  //adds the restaurant website;
+        cuisineInfo +
+        websiteInfo;  //adds the restaurant website;
     });
 }
 
@@ -77,9 +93,11 @@ const hoverEffect = (element) => {
 
 //function to clear the results section after each new search
 const clearAll = () => {
-    results_section.innerHTML =""; //remove all the html in the results section
+    results_section.innerHTML =""; //remove all the html in the results section76
     detailed_results_section.innerHTML=""; //remove all the html in the detailed display section.
     detailed_results_section.style.display='none'; //hide the detailed results selection.
     results_section.style.color = 'white'; //changes default text color to white.
 }
+
+
 
