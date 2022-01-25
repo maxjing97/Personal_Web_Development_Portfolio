@@ -26,9 +26,6 @@ function search (searchString) {
 
 
 
-
-
-
 //function to load the data. For now, the json object is listed. An API-fetch will be implemented later
 function loadData() {
   return localRestaurants;
@@ -1432,7 +1429,7 @@ const localRestaurants = [
       "ID": "edb0634a-7116-4780-9a25-a853631b69f8",
       "Name": "Jurassic Grill",
       "Cuisine": "delivery",
-      "Website": ""
+      "Website": "https://www.grubhub.com/restaurant/jurassic-grill-404-e-green-st-champaign/302999"
     },
     {
       "ID": "ee955584-68ee-4c70-bb75-4a24317222aa",

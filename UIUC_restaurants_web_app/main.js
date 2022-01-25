@@ -93,11 +93,8 @@ const hoverEffect = (element) => {
 
 //function to clear the results section after each new search
 const clearAll = () => {
-    results_section.innerHTML =""; //remove all the html in the results section76
+    results_section.innerHTML =""; //remove all the html in the results section
     detailed_results_section.innerHTML=""; //remove all the html in the detailed display section.
     detailed_results_section.style.display='none'; //hide the detailed results selection.
     results_section.style.color = 'white'; //changes default text color to white.
 }
-
-
-
