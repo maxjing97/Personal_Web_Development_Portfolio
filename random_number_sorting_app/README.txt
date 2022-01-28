@@ -1,0 +1,2 @@
+This application allows users to generate and amount of random numbers in a certain range and test the time of three common sorting 
+algorithms: insertion sort, merge sort, and a variation of quick sort based on the user-inputted size of the number set.
