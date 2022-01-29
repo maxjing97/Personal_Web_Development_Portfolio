@@ -2,6 +2,7 @@ body {
     text-align: center;
     font-family: Helvetica, sans-serif;
     background-color:rgb(43, 174, 226);
+    margin: 0 auto;
 }
 
 header {
@@ -31,20 +32,56 @@ header h1 {
 
 
 nav ul {
+    display: flex;
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: blueviolet;
 }
-  
-nav li {
-    font-size: 16pt;
 
-    float: left;
+nav a {
+    font-size: 16pt;
+    color: white;
+    
     display: block;
-    margin: 10px 5px;
-  }
+    padding: 10px 5px;
+    text-decoration: none;
+
+}
+
+nav a:hover {
+    background-color: aqua;
+    color:black;
+}
+
+.active {
+    background-color: pink;
+    color:black
+}
+
+
+
+.about {
+    box-sizing: border-box;
+    text-align: center;
+    width: 700px;
+    height: 400px;
+
+    font-family: Helvetica, sans-serif;
+    margin: 40px auto;
+    font-size: 15pt;
+    background-color: bisque;
+    padding: 30px;
+}
+
+.about p {
+    margin-bottom: 30px;
+}
+
+.about h3,p {
+    margin: 0;
+}
 
 #main_list {
     float: left;
@@ -52,6 +89,8 @@ nav li {
     text-align: left;
     background-color: rgb(89, 0, 255);
     width: 350px;
+
+    margin: 0 auto;
 }
 
 #main_list h3 {
@@ -101,6 +140,7 @@ nav li {
     border-radius: 50%;
 
 }
+
 
 #main_list li:hover {
     background-color: rgb(255, 255, 255);
