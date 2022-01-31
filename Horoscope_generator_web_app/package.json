@@ -11,5 +11,6 @@
   "keywords": [],
   "dependencies": {
     "mocha": "^9.2.0"
-  }
+  },
+  "devDependencies": {}
 }

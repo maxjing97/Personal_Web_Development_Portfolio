@@ -30,8 +30,6 @@ describe('generateHoroscope', () => {
                     assert.equal(true, currentPassed);
                 }
             }
-
-            assert.equal(true, true);  //passes if all cases pass
         });
     });
 
@@ -60,8 +58,6 @@ describe('generateHoroscope', () => {
                     assert.equal(true, currentPassed);
                 }
             }
-
-            assert.equal(true, true);  //passes if all cases pass
         });
     });
 
@@ -90,8 +86,6 @@ describe('generateHoroscope', () => {
                     assert.equal(true, currentPassed);
                 }
             }
-
-            assert.equal(true, true);  //passes if all cases pass
         });
     });
         
@@ -120,8 +114,6 @@ describe('generateHoroscope', () => {
                     assert.equal(true, currentPassed);
                 }
             }
-
-            assert.equal(true, true);  //passes if all cases pass
         });
     });
 
