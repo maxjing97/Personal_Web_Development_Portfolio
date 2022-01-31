@@ -12,8 +12,8 @@ describe('generateHoroscope', () => {
             //gets the part of the object containing the words particular to the fire signs.
             const fire_words = mainProgram.words.traits.fire;
             
-            //test the function 100 times
-            for (let testing = 0; testing < 100; testing++) {
+            //test the function 500 times
+            for (let testing = 0; testing < 500; testing++) {
                 //call function to generate sentence based on any random index in the sign category array.
                 let sentence = mainProgram.generateHoroscope (signs[Math.floor( Math.random()) *  signs.length]);
                 
@@ -42,8 +42,8 @@ describe('generateHoroscope', () => {
             //gets the part of the object containing the words particular to the water signs.
             const water_words = mainProgram.words.traits.water;
             
-            //test the function 100 times
-            for (let testing = 0; testing < 100; testing++) {
+            //test the function 500 times
+            for (let testing = 0; testing < 500; testing++) {
                 //call function to generate sentence based on any random index in the sign category array.
                 let sentence = mainProgram.generateHoroscope (signs[Math.floor( Math.random()) *  signs.length]);
                 
@@ -72,8 +72,8 @@ describe('generateHoroscope', () => {
             //gets the part of the object containing the words particular to the earth signs.
             const earth_words = mainProgram.words.traits.earth;
             
-            //test the function 100 times
-            for (let testing = 0; testing < 100; testing++) {
+            //test the function 500 times
+            for (let testing = 0; testing < 500; testing++) {
                 //call function to generate sentence based on any random index in the sign category array.
                 let sentence = mainProgram.generateHoroscope (signs[Math.floor( Math.random()) *  signs.length]);
                 
@@ -102,10 +102,10 @@ describe('generateHoroscope', () => {
             //gets the part of the object containing the words particular to the air signs.
             const air_words = mainProgram.words.traits.air;
             
-            //test the function 100 times
-            for (let testing = 0; testing < 100; testing++) {
+            //test the function 500 times
+            for (let testing = 0; testing < 500; testing++) {
                 //call function to generate sentence based on any random index in the sign category array.
-                let sentence = mainProgram.generateHoroscope (signs[Math.floor( Math.random()) *  signs.length]);
+                let sentence = mainProgram.generateHoroscope (signs[Math.floor(Math.random()) *  signs.length]);
                 
                 let currentPassed = false; //boolean to store the if the current test failed.
                 

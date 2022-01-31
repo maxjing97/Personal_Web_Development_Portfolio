@@ -1,0 +1,14 @@
+{
+  "name": "uiuc_restaurants_web_app",
+  "version": "1.0.0",
+  "description": "Web app showing all restaurants in range of a certain location using an API.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^9.2.0"
+  }
+}

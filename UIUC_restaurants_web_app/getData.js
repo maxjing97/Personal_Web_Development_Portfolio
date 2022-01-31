@@ -20,11 +20,7 @@ function search (searchString) {
   return results; //returns the list of restaurant objects
 }
 
-
-
-
-
-
+//export search function for testing
 
 //function to load the data. For now, the json object is listed. An API-fetch will be implemented later
 function loadData() {
