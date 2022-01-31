@@ -10,7 +10,6 @@ function search (searchString) {
     let restaurantName = RestaurantList[i].Name.toLowerCase().trim();   //stores the name string of each Restaurant.
     let restaurantCuisine = RestaurantList[i].Cuisine.toLowerCase().trim(); //stores the cuisine string of each Restaurant.
 
-
     //add all restaurant objects that contain the search string in the name or cuisine.
     if(restaurantName.includes(query) || restaurantCuisine.includes(query)) {
       results.push(RestaurantList[i]);
