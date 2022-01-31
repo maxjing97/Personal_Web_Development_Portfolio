@@ -14,5 +14,6 @@ const returnResult = (element) => {
 
     paragraph.style.display = 'block'; //displays hidden paragraph to show the message.
     paragraph.innerText = generateHoroscope(element.id); //send the generated message to the user
+    //the id always matches a horoscope sign
 }
 

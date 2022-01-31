@@ -1,6 +1,5 @@
 let category = ''; // global variable to store the category of astrological sign entered
 
-
 //object to store possible words based on the category of astrological sign
 const words = {
     traits: {
@@ -64,11 +63,6 @@ generateRandomNumberRange = (start, end) => {
     return Math.floor(Math.random() * (end - start + 1) + start);
 }
 
-
-
-
-
-
 //finds a random trait to add to the horoscope based on the category of the astrological sign and the words object.
 generateRandomWords = () => {
     let toReturn = []; //array to be returned. The first value is the trait and the second value is the goal.
@@ -107,3 +101,5 @@ const message3 = () => {
     return `You are on track, due to your ${generateRandomWords()[0]}, to achieving your 
     ${generateRandomWords()[1]}.`;
 };
+
+module.exports = {generateHoroscope, words}; //exports for testing
