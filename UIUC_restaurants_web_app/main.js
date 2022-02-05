@@ -55,8 +55,7 @@ const displaydetails = (element, restaurantObject) => {
         results_section.innerHTML = restaurant.id + "<br>"; //changes the list of restaurants displayed so that only the restaurant displayed in detail is shown
         results_section.style.color = 'aqua'; //change the color of the only displayed restaurant after the click
         detailed_results_section.style.display ='block'; //show the detailed box
-
-        
+     
         //text displayed
         let cuisineInfo = ''; //stores the cuisine info
         let websiteInfo = ''; //stores the website info

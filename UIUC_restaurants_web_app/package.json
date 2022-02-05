@@ -4,7 +4,7 @@
   "description": "Web app showing all restaurants in range of a certain location using an API.",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
