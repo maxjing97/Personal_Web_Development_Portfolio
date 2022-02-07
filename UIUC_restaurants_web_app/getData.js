@@ -1,5 +1,5 @@
 let RestaurantList = {}; //variable to store loaded json data.
-getData(); //call the getData function;
+getData(); //call the getData function at start so only one API call is needed.
 
 //function to search the json object returned. Returns an array of matching restaurant objects.
 function search (searchString) {
@@ -31,14 +31,15 @@ async function getData() {
     //gets information
     try {
         const response = await fetch(localAPI_URL); //response variable
-        if(response.ok) {
+        
+        if (response.ok) {
             //if the response is successful:
             const rawData = await response.json(); //gets the response
             RestaurantList = rawData; //assign the global restaurant variable to the data. 
-        }
-
-        throw new Error("Request failed");
+        } else {
+          throw new Error;
+        }        
     } catch (error) {
-        console.log("Request has failed:" + error)
+        console.log("Request has failed, error message: " + error);
     }
 }
