@@ -2,9 +2,6 @@ const search_bar = document.getElementById("search-bar"); //get the input search
 const results_section = document.getElementById("search-results"); //get the section to populate with the search results
 const detailed_results_section = document.getElementById("detailed-results");
 
-//get the json object containing the restaurants
-const restaurantsJSON = loadData();
-
 //get the search string and call the function to display a list of restaurants.
 search_bar.addEventListener('keyup', (e) => {
     let searchString = e.target.value; //returns the value put into the search string

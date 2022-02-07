@@ -1,9 +1,12 @@
+let RestaurantList = {}; //variable to store loaded json data.
+getData(); //call the getData function;
+
 //function to search the json object returned. Returns an array of matching restaurant objects.
 function search (searchString) {
   const query = searchString.toLowerCase().trim(); //makes the search string actually used all lowercase and removed of trailing or leading spaces.
   let results = []; //initializes a results array;
 
-  const RestaurantList = loadData(); //gets the list of restaurant objects 
+  
 
   //loop to travese the JSON array of restaurant objects and return matching restaurants by name or cuisine type
   for (let i = 0; i < RestaurantList.length; i++) {
@@ -20,8 +23,7 @@ function search (searchString) {
 }
 
 //fetchs the data from the api - local for now.
-async function loadData() {
-    let data = []; //array of data to be returned.
+async function getData() {
 
     //sets api information
     const localAPI_URL = 'http://localhost:3000/restaurants'; //url for the local API
@@ -31,14 +33,12 @@ async function loadData() {
         const response = await fetch(localAPI_URL); //response variable
         if(response.ok) {
             //if the response is successful:
-            data = await response.json(); //gets the response
+            const rawData = await response.json(); //gets the response
+            RestaurantList = rawData; //assign the global restaurant variable to the data. 
         }
 
-        throw new Error("Request failed")
+        throw new Error("Request failed");
     } catch (error) {
-        console.log(error)
-        return data; //returns an empty array
+        console.log("Request has failed:" + error)
     }
 }
-
-console.log("Load data test: " + loadData());
