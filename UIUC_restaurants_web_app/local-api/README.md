@@ -1,1 +1,1 @@
-This is a local api created using npm's json server;
+This is a local api created using npm's json-server library;
