@@ -24,7 +24,6 @@ const displayResults = (searchString) => {
 
     //calls the search function to return the array of matching restaurant objects
     let RestaurantObjects = search(searchString);
-    
 
     //iterate through all values of the results
     //add new elements representing each restaurant
@@ -39,7 +38,6 @@ const displayResults = (searchString) => {
         displaydetails(newRestaurantElement, RestaurantObjects[i]);
         //calls function to add events that give the hover effect
         hoverEffect(newRestaurantElement);
-
 
         results_section.appendChild(newRestaurantElement); //add newly created element
     }
