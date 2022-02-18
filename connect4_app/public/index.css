@@ -1,0 +1,11 @@
+#root {
+    text-align: center;
+    color: rosybrown;
+    background-color: black;
+    margin-top: 0;
+    padding-top: 0;
+}
+
+#wrapper {
+    background-color: aqua;
+}
