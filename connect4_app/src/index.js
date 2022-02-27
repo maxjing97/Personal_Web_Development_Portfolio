@@ -11,10 +11,15 @@ const basic_element = (
 
 //react components must be capitalized
 class MyComponent extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {clicked : false};
+    }
+
     render() {
         return basic_element;   
     }
 }
 
 
-ReactDOM.render(<MyComponent/>, document.getElementById('root'));
+ReactDOM.render(<MyComponent/>, document.getElementById('app'));

@@ -29,16 +29,29 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    
+    <header>
+      <h1>Play Connect Four!</h1>
+    </header>
+    
+    <section id="select">
+        <h3>Choose a player's disk:</h3>
+        <ul id="disks">
+          <!--rendered by react-->
+        </ul>
+    </section>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+    <section id="board">
+      <!--rendered by react-->
+    </section>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <section id="results">
+      <!--rendered by react-->
+    </section>
+
+    <section id="about">
+      This application was created by Max Jing. Contact maxjing97@gmail.com for more information.
+    </section>
+
   </body>
 </html>
