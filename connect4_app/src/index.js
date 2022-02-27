@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM  from "react-dom";
 
-import {Message} from './game';  //game react file responsible for the messages given to user of the game
+ //game react file responsible for the messages given to user of the game, user interactions
+import {Message, generate_game_board, initiateBoard} from './game'; 
 
 let diskClicked = ""; //string storing the disk clicked
 let isActive = false; //stores whether or not a game is active
+
 
 //renders the initial message with the correct prop when clicked
 ReactDOM.render(<Message isActive={isActive} player={diskClicked}/>, document.getElementById('game-status'));
@@ -73,20 +75,8 @@ class BlackDisk extends React.Component {
     }
 };
 
-//component encompassing all the two disks
-class Disks extends React.Component {
-    render() {
-        return (
-            <div>
-                <RedDisk/>
-                <BlackDisk/>
-            </div>
-        );
-    }
-};
-
-
-ReactDOM.render(<Disks/>, document.getElementById('disks'));
+const disks = [<RedDisk></RedDisk>, <BlackDisk></BlackDisk>]; //array of the player disks
+ReactDOM.render(disks, document.getElementById('disks'));
 
 
 //component for the undo button
@@ -108,8 +98,14 @@ class Undo extends React.Component {
 class Reset extends React.Component {
     clicked() {
         //resets the game
-        isActive = false;
-
+        
+        let answer = window.confirm("Are you sure you want to Reset the game? All progress will be lost");
+        if (answer) {
+            isActive = false;
+        }
+        else {
+            isActive = true;
+        }
         //renders the message with the correct prop when clicked
         ReactDOM.render(<Message isActive={isActive} player={diskClicked}/>, document.getElementById('game-status'));
     }
@@ -124,15 +120,10 @@ class Reset extends React.Component {
 };
 
 //renders the undo and reset buttons
-class Action extends React.Component {
-    render() {
-        return (
-            <div>
-                <Undo/>
-                <Reset/>
-            </div>
-        );
-    }
-};
+const action = [<Undo></Undo>, <Reset></Reset>];
+ReactDOM.render(action, document.getElementById('action-buttons'));
 
-ReactDOM.render(<Action/>, document.getElementById('action-buttons'));
+//generate the board;
+initiateBoard();
+//generate the visual representation of the game board with the onclick attributes
+generate_game_board();
