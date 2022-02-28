@@ -16,31 +16,46 @@ ReactDOM.render(<Message isActive={isActive} player={diskClicked}/>, document.ge
 class RedDisk extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = { //this state consists of the style
             style: {
-                backgroundColor: "red"
+                backgroundColor: "red",
+                position: "relative",
+                boxShadow: "none"
             }  
         };
+        this.left = this.left.bind(this);
     }
 
     clicked() {
         diskClicked = "red";
         isActive = true;
+
+        //calls function to show the active button by changing style
+        showActiveButton(diskClicked);
+
         set_disk(diskClicked); //calls function to change the game board color accordingly
         //renders the message with the correct prop when clicked
         ReactDOM.render(<Message isActive={isActive} player={diskClicked}/>, 
             document.getElementById('game-status'));
     }
 
-    hovered() {
-        this.setState({style: {
-            backgroundColor: "red"
-        }});
+    left() {
+        //remove shadow if this disk is no longer the active one.
+        if(diskClicked !== "red") {
+            this.setState({
+                style: {
+                    backgroundColor: "red",
+                    position: "relative",
+                    boxShadow: "none"
+                }  
+            });
+        }
     }
+
     render() {
         return (
             <div>
-                <button id='red' onClick={this.clicked}  style={this.state.style}>
+                <button id="red" onClick={this.clicked} onMouseLeave={this.left} style={this.state.style}>
                 Red
                 </button>
             </div>
@@ -52,27 +67,46 @@ class RedDisk extends React.Component {
 class BlackDisk extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = { //this state consists of the style
             style: {
-                backgroundColor: "black"
+                backgroundColor: "black",
+                position: "relative",
+                boxShadow: "none"
             }  
         };
+        this.left = this.left.bind(this);
     }
 
     clicked() {
         diskClicked = "black";
         isActive = true;
-        
+
+        //calls function to show the active button by changing style
+        showActiveButton(diskClicked);
+
         set_disk(diskClicked); //calls function to change the game board color accordingly
         //renders the message with the correct prop when clicked
         ReactDOM.render(<Message isActive={isActive} player={diskClicked}/>, 
             document.getElementById('game-status'));
     }
 
+    left() {
+        //remove shadow if this disk is no longer the active one.
+        if(diskClicked !== "black") {
+            this.setState({
+                style: {
+                    backgroundColor: "black",
+                    position: "relative",
+                    boxShadow: "none"
+                }  
+            });
+        }
+    }
+
     render() {
         return (
             <div>
-                <button id='black' onClick={this.clicked} style={this.state.style}>Black</button>
+                <button id="black" onClick={this.clicked} onMouseLeave={this.left} style={this.state.style}>Black</button>
             </div>
         );
     }
@@ -107,6 +141,7 @@ class Reset extends React.Component {
         if (answer) {
             isActive = false;
             diskClicked = "empty"; //intializes the game back to the empty value
+            showActiveButton("empty");
             ResetArray(); //calls function to reset array;
         }
         else {
@@ -130,3 +165,32 @@ class Reset extends React.Component {
 const action = [<Undo></Undo>, <Reset></Reset>];
 ReactDOM.render(action, document.getElementById('action-buttons'));
 
+//function to show the active button 
+function showActiveButton(id_input) {
+    //checks that the id is not the empty value, and changes the opposites.
+    if(id_input !== "empty") {
+        const element = document.getElementById(id_input);
+        element.style.boxShadow = "0 35px grey";
+        element.style.bottom = "35px";
+
+        if (id_input === "red") {
+            const black = document.getElementById("black");
+            black.style.boxShadow = "none";
+            black.style.bottom = "0";
+        } else if (id_input === "black") {
+            const red = document.getElementById("red");
+            red.style.boxShadow = "none";
+            red.style.bottom = "0";    
+        }
+    } 
+    //if the active button is empty again, reset both the red and black buttons to their defaults
+    if(id_input === "empty") {
+        const red = document.getElementById("red");
+        red.style.boxShadow = "none";
+        red.style.bottom = "0";
+
+        const black = document.getElementById("black");
+        black.style.boxShadow = "none";
+        black.style.bottom = "0";
+    } 
+}

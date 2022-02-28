@@ -31,7 +31,7 @@ header h1 {
     width: 200px;
     max-height: 530.8px;
     text-align: center;
-    background-color: rgb(89, 0, 255);
+    background-color: #966F33 ;
     margin: 0 0px;
 
     overflow: hidden;
@@ -68,6 +68,8 @@ header h1 {
     font-weight: 700;
     display: inline-block;
     color: white;
+    
+    position: relative;
 
     width: 120px;
     height: 120px;
@@ -118,8 +120,12 @@ header h1 {
 /*selector for when the button is clicked*/
 #select div button.action:active {
     box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
+    transform: translateY(3px);
+    -webkit-transform: translateY(3px);
+    -moz-transform: translateY(3px);
+    -ms-transform: translateY(3px);
+    -o-transform: translateY(3px);
+}
 
 #board-background {
     display: inline-block;
