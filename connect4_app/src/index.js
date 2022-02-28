@@ -28,7 +28,8 @@ class RedDisk extends React.Component {
         isActive = true;
         set_disk(diskClicked); //calls function to change the game board color accordingly
         //renders the message with the correct prop when clicked
-        ReactDOM.render(<Message isActive={isActive} player={diskClicked}/>, document.getElementById('game-status'));
+        ReactDOM.render(<Message isActive={isActive} player={diskClicked}/>, 
+            document.getElementById('game-status'));
     }
 
     hovered() {
@@ -64,7 +65,8 @@ class BlackDisk extends React.Component {
         
         set_disk(diskClicked); //calls function to change the game board color accordingly
         //renders the message with the correct prop when clicked
-        ReactDOM.render(<Message isActive={isActive} player={diskClicked}/>, document.getElementById('game-status'));
+        ReactDOM.render(<Message isActive={isActive} player={diskClicked}/>, 
+            document.getElementById('game-status'));
     }
 
     render() {
@@ -110,7 +112,8 @@ class Reset extends React.Component {
             isActive = true;
         }
         //renders the message with the correct prop when clicked
-        ReactDOM.render(<Message isActive={isActive} player={diskClicked}/>, document.getElementById('game-status'));
+        ReactDOM.render(<Message isActive={isActive} player={diskClicked}/>, 
+            document.getElementById('game-status'));
     }
 
     render() {
