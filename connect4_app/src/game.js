@@ -5,8 +5,18 @@ import {getArray} from './game_calc';
 
 const num_rows = 6; //number of rows in the board;
 const num_columns = 7; //number of columns in the board
-let arrayBoard = []; //2d array of the board
-let columnClicked = "0" //this records the column clicked
+
+let diskClicked = "empty" //this records the disk clicked
+
+let arrayBoard = []; //2d array of the board, initiated as:
+for (let row = 0; row < num_rows; row++) {
+    let subArray = []; //subarray to add
+    for (let column = 0; column < num_columns; column++) {
+        subArray.push("empty"); //initializes all elements with empty
+    }
+    arrayBoard.push(subArray)
+}
+
 
 //displays message based on the status of the game
 export class Message extends React.Component {
@@ -25,19 +35,15 @@ export class Message extends React.Component {
 };
 
 //function to generate the array representation of the board that is used to make pattern computations;
-export function initiateBoard() {
-    for (let row = 0; row < num_rows; row++) {
-        let subArray = []; //subarray to add
-        for (let column = 0; column < num_columns; column++) {
-            subArray.push("empty"); //initializes all elements with empty
-        }
-        arrayBoard.push(subArray)
-    }
-}
 
+//function to set the disk used
+export function set_disk (input) {
+    diskClicked = input;
+}
 
 //component-based representation of the board based on the array board with each slot being a react component with a column id.
 //each slot has an onclick attribute that causes a column insertion to be recorded. 
+//the disk parameter is the string representing the value of the disk inserted: red or black
 export function generate_game_board() {
     let slots  = []; //array of the slots
 
@@ -45,20 +51,30 @@ export function generate_game_board() {
         let subArray = []; //subarray to to slots
         for (let column = 0; column < num_columns; column++) {
             class Slot extends React.Component {
-                clicked() {  //function for handling clicked events
-                    arrayBoard = getArray(column);
+                constructor(props) {
+                    super(props);
+                }
+
+                 //function for handling clicked events
+                clicked() { 
+                    
+                    //sets the arrayBoard to the value set by the get array function and column clicked
+                    getArray(arrayBoard, column, diskClicked); 
+                    modifyColor(arrayBoard);
+
                 }
                 
                 render () {
+
                      //returns the circularly shaped slots
-                     //the id name is based on the column number as a string
+                     //the id name is based on the column number and row number as a string
                     return (
-                        <button onClick={this.clicked} className="slot"></button>
+                        <button onClick={this.clicked} className="slot"  id={"r"+row+"c"+column}>
+
+                        </button>
                     );
                 }        
             }
-
-
             subArray.push(<Slot></Slot>); //initializes all elements with empty
         }
         slots.push(subArray)
@@ -66,4 +82,27 @@ export function generate_game_board() {
     ReactDOM.render(slots, document.getElementById("board"))//append the slots to the game
 }
 
+//changes color based on the array provided and the disk clicked
+function modifyColor(array) {
+    for (let row = 0; row < num_rows; row++) {
+        for (let column = 0; column < num_columns; column++) {
+            //changes if the color is not empty
+            if(array[row][column] !== "empty") {
+                let slot = document.getElementById("r"+row+"c"+column); //this works since each slot has been assigned an id this way
+                slot.style.backgroundColor= array[row][column];
+            }
+        }
+    }
+}
 
+export function ResetArray() {
+    arrayBoard = [];
+    for (let row = 0; row < num_rows; row++) {
+        let subArray = []; //subarray to add
+        for (let column = 0; column < num_columns; column++) {
+            subArray.push("empty"); //initializes all elements with empty
+        }
+        arrayBoard.push(subArray)
+    }
+    generate_game_board();
+}

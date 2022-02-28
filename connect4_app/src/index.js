@@ -2,12 +2,13 @@ import React from "react";
 import ReactDOM  from "react-dom";
 
  //game react file responsible for the messages given to user of the game, user interactions
-import {Message, generate_game_board, initiateBoard} from './game'; 
+import {Message, generate_game_board, set_disk, ResetArray} from './game'; 
 
-let diskClicked = ""; //string storing the disk clicked
+let diskClicked = "empty"; //string storing the disk clicked
 let isActive = false; //stores whether or not a game is active
 
-
+//generate the visual representation of the game board with the onclick attributes
+generate_game_board();
 //renders the initial message with the correct prop when clicked
 ReactDOM.render(<Message isActive={isActive} player={diskClicked}/>, document.getElementById('game-status'));
 
@@ -24,8 +25,8 @@ class RedDisk extends React.Component {
 
     clicked() {
         diskClicked = "red";
-        console.log(diskClicked);
         isActive = true;
+        set_disk(diskClicked); //calls function to change the game board color accordingly
         //renders the message with the correct prop when clicked
         ReactDOM.render(<Message isActive={isActive} player={diskClicked}/>, document.getElementById('game-status'));
     }
@@ -60,8 +61,8 @@ class BlackDisk extends React.Component {
     clicked() {
         diskClicked = "black";
         isActive = true;
-        console.log(diskClicked);
-
+        
+        set_disk(diskClicked); //calls function to change the game board color accordingly
         //renders the message with the correct prop when clicked
         ReactDOM.render(<Message isActive={isActive} player={diskClicked}/>, document.getElementById('game-status'));
     }
@@ -102,6 +103,8 @@ class Reset extends React.Component {
         let answer = window.confirm("Are you sure you want to Reset the game? All progress will be lost");
         if (answer) {
             isActive = false;
+            diskClicked = "empty"; //intializes the game back to the empty value
+            ResetArray(); //calls function to reset array;
         }
         else {
             isActive = true;
@@ -123,7 +126,3 @@ class Reset extends React.Component {
 const action = [<Undo></Undo>, <Reset></Reset>];
 ReactDOM.render(action, document.getElementById('action-buttons'));
 
-//generate the board;
-initiateBoard();
-//generate the visual representation of the game board with the onclick attributes
-generate_game_board();
