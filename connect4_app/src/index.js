@@ -137,7 +137,7 @@ class Reset extends React.Component {
     clicked() {
         //resets the game
         
-        let answer = window.confirm("Are you sure you want to Reset the game? All progress will be lost");
+        let answer = window.confirm("Are you sure you want to reset the game? All progress will be lost.");
         if (answer) {
             isActive = false;
             diskClicked = "empty"; //intializes the game back to the empty value
@@ -155,7 +155,7 @@ class Reset extends React.Component {
     render() {
         return (
             <div>
-                <button className="action" onClick={this.clicked}>Reset game</button>
+                <button className="action" onClick={this.clicked}>New Game</button>
             </div>
         );
     }

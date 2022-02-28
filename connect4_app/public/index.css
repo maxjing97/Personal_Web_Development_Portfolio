@@ -7,14 +7,14 @@ body {
 }
    
 header {
-    background-color: rgb(57, 32, 223);
+    background-color: rgb(80, 72, 131);
     height: 100px;
     margin-top: 0;
 }
 
 header h1 {
     font-size: 30pt;
-    color: #C5DF20;
+    color: #ff2802;
     padding-top: 20px;
     margin-top: 0;
 }
