@@ -1,3 +1,4 @@
+/* eslint-disable no-loop-func */
 import React from "react";
 import ReactDOM  from "react-dom";
 
@@ -7,6 +8,8 @@ const num_rows = 6; //number of rows in the board;
 const num_columns = 7; //number of columns in the board
 
 let diskClicked = "empty" //this records the disk clicked
+let winnerFound = false; //records if a winner has been found
+let winnerName = ""; //records the name of the winner
 
 let arrayBoard = []; //2d array of the board, initiated as:
 for (let row = 0; row < num_rows; row++) {
@@ -54,24 +57,30 @@ export function generate_game_board() {
         let subArray = []; //subarray to to slots
         for (let column = 0; column < num_columns; column++) {
             class Slot extends React.Component {
-                constructor(props) {
-                    super(props);
-                }
-
                  //function for handling clicked events
                 clicked() { 
-                    //sets the arrayBoard to the value set by the get array function and column clicked
-                    getArray(arrayBoard, column, diskClicked); 
-                    
+                    //changes the array and outputs a message if the change occurs
+                    getArray(arrayBoard, column, diskClicked);
                     //changes the color based on the array 
                     modifyColor(arrayBoard);
+                        
+                    //modifies the game array and 
+                    //checks for a winner and output a message if no winner has been found
+                    if (winnerFound) {
+                        //output the same winner if a winner has already been found
+                        ReactDOM.render(<Message message={winnerName+ " has already won! Please start a new game."}/>, 
+                            document.getElementById('game-status'));  
 
-                    //checks for a winner
-                    CheckForWinner(arrayBoard, diskClicked)
+                    } else  if (CheckForWinner(arrayBoard, diskClicked) && !winnerFound) {
+                        winnerFound = true; //set variables
+                        winnerName = diskClicked;
+                        //output message of winner if a winner has been found,
+                        ReactDOM.render(<Message message={winnerName+ " has won!"}/>, 
+                            document.getElementById('game-status'));                        
+                    }  
                 }
                 
                 render () {
-
                      //returns the circularly shaped slots
                      //the id name is based on the column number and row number as a string
                     return (
@@ -89,7 +98,10 @@ export function generate_game_board() {
 }
 
 export function ResetArray() {
+    //resets all values to default ones:
     arrayBoard = [];
+    winnerFound = false;
+    winnerName = "";
     for (let row = 0; row < num_rows; row++) {
         let subArray = []; //subarray to add
         for (let column = 0; column < num_columns; column++) {
@@ -102,9 +114,16 @@ export function ResetArray() {
 
 //changes color based on the array provided and the disk clicked
 function modifyColor(array) {
+    //finds the next player.
+    let nextPlayer = "red"
+    if (diskClicked === "red") {
+        nextPlayer = "black"
+    }    
+    
     //updates the message to pass to the next player
-    ReactDOM.render(<Message isActive={true} player={diskClicked}/>, 
+    ReactDOM.render(<Message isActive={true} player={nextPlayer}/>, 
         document.getElementById('game-status')); 
+
     for (let row = 0; row < num_rows; row++) {
         for (let column = 0; column < num_columns; column++) {
             //changes if the color is not empty

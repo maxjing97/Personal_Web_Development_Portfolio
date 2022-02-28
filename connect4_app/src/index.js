@@ -98,6 +98,7 @@ class Undo extends React.Component {
     }
 };
 
+//component for the reset button
 class Reset extends React.Component {
     clicked() {
         //resets the game

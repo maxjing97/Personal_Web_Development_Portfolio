@@ -1,15 +1,9 @@
-import React from "react";
-import ReactDOM  from "react-dom";
-//this file calculates the game results for a board
-
-import {Message} from './game'; 
-
 const num_rows = 6; //number of rows in the board;
 const num_columns = 7; //number of columns in the board
 
-//function returns the value of an array after column has been clicked
+//function modifies the values of an array after column has been clicked
 export function getArray(array, column, disk) {
-    let dropped = false; //functionean to check if a disk has been dropped in this function call. initialized to false
+    let dropped = false; //boolean variable to check if a disk has been dropped in this function call. initialized to false
 
     for (let row = 0; row < num_rows; row++) {
       if (array[row][column] === "empty" && !dropped) {
@@ -24,26 +18,19 @@ export function getArray(array, column, disk) {
 export function CheckForWinner(array, disk) {
     //invokes search for winner on all 4 possible directions, represented by a enum
     if (FindHorizontalRows(array, disk)) {
-      
-        //returns true is there is a winner in horizontal direction matching the disk passed in
-        ReactDOM.render(<Message message={disk+ " wins!"}/>, 
-            document.getElementById('game-status'));
+        return true;
     }
     else if (FindVerticalRows(array, disk)) {
-        //returns true is there is a winner in horizontal direction matching the disk passed in
-        ReactDOM.render(<Message message={disk+ " wins!"}/>, 
-            document.getElementById('game-status'))
+        return true;
     }
     else if (FindLeftDiagonalRows(array, disk)) {
-      //returns true is there is a winner in horizontal direction matching the disk passed in
-      ReactDOM.render(<Message message={disk+ " wins!"}/>, 
-        document.getElementById('game-status'))
+        return true;
     }
     else if (FindRightDiagonalRows(array, disk)) {
-      //returns true is there is a winner in horizontal direction matching the disk passed in
-      ReactDOM.render(<Message message={disk+ " wins!"}/>, 
-        document.getElementById('game-status'))
+        return true;
     }
+
+    return false;
   }
   
   //helper function to find horizontal rows by iterating through the columns
@@ -57,13 +44,13 @@ export function CheckForWinner(array, disk) {
   
           //then loop through the following four values to see if any of them match the disk type.
           for (let i = 0; i < 4; i++) {
-            if (array[row][col + i] == disk) {
+            if (array[row][col + i] === disk) {
               consecutive++;
             }
           }
   
           //return true if consecutive values are found.
-          if (consecutive == 4) {
+          if (consecutive === 4) {
             return true;
           }  
         
@@ -85,13 +72,13 @@ export function CheckForWinner(array, disk) {
   
           //then loop through the following four values to see if any of them match the disk type.
           for (let i = 0; i < 4; i++) {
-            if (array[row+i][col] == disk) {
+            if (array[row+i][col] === disk) {
               consecutive++;
             }
           }
   
           //return true if consecutive values are found.
-          if (consecutive == 4) {
+          if (consecutive === 4) {
             return true;
           }  
         
@@ -116,12 +103,12 @@ export function CheckForWinner(array, disk) {
           //then loop through the following four diagonal values to see if any of them match the disk type.
           for (let i = 0; i < 4; i++) {
   
-            if (array[row+i][col - i] == disk) {
+            if (array[row+i][col - i] === disk) {
               consecutive++;
             }
           } 
           //return true if consecutive values are found.
-          if (consecutive == 4) {
+          if (consecutive === 4) {
             return true;
           }  
         
@@ -142,13 +129,13 @@ export function CheckForWinner(array, disk) {
   
           //then loop through the following four diagonal values to see if any of them match the disk type.
           for (let i = 0; i < 4; i++) {
-            if (array[row+i][col + i] == disk) {
+            if (array[row+i][col + i] === disk) {
               consecutive++;
             }
           }
   
           //return true if consecutive values are found.
-          if (consecutive == 4) {
+          if (consecutive === 4) {
             return true;
           }  
         
