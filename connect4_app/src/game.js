@@ -54,30 +54,33 @@ export function generate_game_board() {
     let slots  = []; //array of the slots
 
     for (let row = 0; row < num_rows; row++) {
-        let subArray = []; //subarray to to slots
+        let subArray = []; //subarray for the slots
         for (let column = 0; column < num_columns; column++) {
             class Slot extends React.Component {
                  //function for handling clicked events
                 clicked() { 
-                    //changes the array and outputs a message if the change occurs
-                    getArray(arrayBoard, column, diskClicked);
-                    //changes the color based on the array 
-                    modifyColor(arrayBoard);
-                        
-                    //modifies the game array and 
-                    //checks for a winner and output a message if no winner has been found
-                    if (winnerFound) {
-                        //output the same winner if a winner has already been found
-                        ReactDOM.render(<Message message={winnerName+ " has already won! Please start a new game."}/>, 
-                            document.getElementById('game-status'));  
+                    //code only runs if the diskClicked is not set to empty
+                    if (diskClicked !== "empty") {
+                        //changes the array and outputs a message if the change occurs
+                        getArray(arrayBoard, column, diskClicked);
+                        //changes the color based on the array 
+                        modifyColor(arrayBoard);
 
-                    } else  if (CheckForWinner(arrayBoard, diskClicked) && !winnerFound) {
-                        winnerFound = true; //set variables
-                        winnerName = diskClicked;
-                        //output message of winner if a winner has been found,
-                        ReactDOM.render(<Message message={winnerName+ " has won!"}/>, 
-                            document.getElementById('game-status'));                        
-                    }  
+                        //modifies the game array and 
+                        //checks for a winner and output a message if no winner has been found
+                        if (winnerFound) {
+                            //output the same winner if a winner has already been found
+                            ReactDOM.render(<Message message={winnerName+ " has already won! Please start a new game."}/>, 
+                                document.getElementById('game-status'));  
+
+                        } else  if (CheckForWinner(arrayBoard, diskClicked) && !winnerFound) {
+                            winnerFound = true; //set variables
+                            winnerName = diskClicked;
+                            //output message of winner if a winner has been found,
+                            ReactDOM.render(<Message message={winnerName+ " has won!"}/>, 
+                                document.getElementById('game-status'));                        
+                        }                          
+                    }
                 }
                 
                 render () {
