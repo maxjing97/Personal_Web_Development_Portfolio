@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM  from "react-dom";
 
  //game react file responsible for the messages given to user of the game, user interactions
-import {Message, generate_game_board, set_disk, ResetArray} from './game'; 
+import {Message, generate_game_board, set_disk, ResetArray, UndoBoard} from './game'; 
 
 let diskClicked = "empty"; //string storing the disk clicked
 let isActive = false; //stores whether or not a game is active
@@ -85,8 +85,8 @@ ReactDOM.render(disks, document.getElementById('disks'));
 //component for the undo button
 class Undo extends React.Component {
     clicked() {
-        //renders the message with the correct prop when clicked
-        ReactDOM.render(<Message isActive={isActive} player={diskClicked}/>, document.getElementById('game-status'));
+        //calls the function to render the message, undo the board
+        UndoBoard();
     }
 
     render() {

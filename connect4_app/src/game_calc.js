@@ -1,3 +1,7 @@
+import ReactDOM  from "react-dom";
+
+import { Message } from "./game";
+
 const num_rows = 6; //number of rows in the board;
 const num_columns = 7; //number of columns in the board
 
@@ -14,23 +18,34 @@ export function getArray(array, column, disk) {
           } 
         }
     }
-
 }
 
 //function to check for winner and output a message is there is a winnter
 export function CheckForWinner(array, disk) {
     //invokes search for winner on all 4 possible directions, represented by a enum
     if (FindHorizontalRows(array, disk)) {
+      //output message of winner if a winner has been found,
+      ReactDOM.render(<Message message={disk+ " has won!"}/>, 
+        document.getElementById('game-status'));
         return true;
     }
     else if (FindVerticalRows(array, disk)) {
-        return true;
+      //output message of winner if a winner has been found,
+      ReactDOM.render(<Message message={disk+ " has won!"}/>, 
+        document.getElementById('game-status'));
+      return true;
     }
     else if (FindLeftDiagonalRows(array, disk)) {
-        return true;
+      //output message of winner if a winner has been found,
+      ReactDOM.render(<Message message={disk+ " has won!"}/>, 
+        document.getElementById('game-status'));
+      return true;
     }
     else if (FindRightDiagonalRows(array, disk)) {
-        return true;
+      //output message of winner if a winner has been found,
+      ReactDOM.render(<Message message={disk+ " has won!"}/>, 
+        document.getElementById('game-status'));
+      return true;
     }
 
     return false;
@@ -98,9 +113,8 @@ export function CheckForWinner(array, disk) {
     //iterate through each  columns to find the number of consecutive enums
     
     for(let row = 0; row < num_rows; row++) {
-      
       for(let col = (num_columns - 1); col >= 0; col--) {
-        if(col >= 3 && row <= (num_rows)) {   
+        if(col >= 3 && row <= (num_rows-4)) {   
           let consecutive = 0;//stores number of consecutive values equal to the passed disk are found
   
           //then loop through the following four diagonal values to see if any of them match the disk type.
@@ -127,7 +141,7 @@ export function CheckForWinner(array, disk) {
       //iterate through each  columns to find the number of consecutive enums
     for(let row = 0; row < num_rows; row++) {
       for(let col = 0; col < num_columns; col++) {
-        if(col <= (num_columns - 4) && row <= (num_rows)) {   
+        if(col <= (num_columns - 4) && row <= (num_rows-4)) {   
           let consecutive = 0;//stores number of consecutive values equal to the passed disk are found
   
           //then loop through the following four diagonal values to see if any of them match the disk type.
