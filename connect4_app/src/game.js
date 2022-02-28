@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM  from "react-dom";
 
-import {getArray, checkWinner} from './game_calc'; 
+import {getArray, CheckForWinner} from './game_calc'; 
 
 const num_rows = 6; //number of rows in the board;
 const num_columns = 7; //number of columns in the board
@@ -29,7 +29,7 @@ export class Message extends React.Component {
             return (
                 <p>It's player {this.props.player}'s turn</p>
             );
-        } else if (this.props.message != false) { //message when an explicit message is passed in
+        } else if (this.props.message !== false) { //message when an explicit message is passed in
             return (
                 <p>{this.props.message}</p>
             );        
@@ -65,6 +65,9 @@ export function generate_game_board() {
                     
                     //changes the color based on the array 
                     modifyColor(arrayBoard);
+
+                    //checks for a winner
+                    CheckForWinner(arrayBoard, diskClicked)
                 }
                 
                 render () {
