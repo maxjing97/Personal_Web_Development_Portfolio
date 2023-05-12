@@ -1,8 +1,9 @@
 /* eslint-disable no-loop-func */
-import React from "react";
+import React, {useState} from "react";
 import ReactDOM  from "react-dom";
 
 import {getArray, CheckForWinner} from './game_calc'; 
+import { showActiveButton } from "./index";
 
 const num_rows = 6; //number of rows in the board;
 const num_columns = 7; //number of columns in the board
@@ -25,12 +26,15 @@ let historyArray = [];  //array storing the history of the game instance in term
 
 //displays message based on the status of the game
 export class Message extends React.Component {
+    
     render() {
         if(this.props.isActive === false) {
             return (
                 <p>Start a new game by clicking any disk</p>
             );
         } else if (this.props.isActive === true) {  //message when 
+            showActiveButton(this.props.player);
+            set_disk(this.props.player);
             return (
                 <p>It's player {this.props.player}'s turn</p>
             );

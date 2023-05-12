@@ -166,7 +166,7 @@ const action = [<Undo></Undo>, <Reset></Reset>];
 ReactDOM.render(action, document.getElementById('action-buttons'));
 
 //function to show the active button 
-function showActiveButton(id_input) {
+export function showActiveButton(id_input) {
     //checks that the id is not the empty value, and changes the opposites.
     if(id_input !== "empty") {
         const element = document.getElementById(id_input);

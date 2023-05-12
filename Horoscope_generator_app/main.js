@@ -18,8 +18,9 @@ function generateHoroscope(input) {
 
 
     const value = generateRandomNumberRange(1, 3); //choses which message format the horoscope will take.
-    if(value === 1) {
-        return message1();
+    if(value === 1) { 
+        return message1()
+        
     }
     if(value === 2) {
         return message2();

@@ -82,6 +82,10 @@ header h1 {
 #select button:active {
     box-shadow: 0 10px white;
     transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    -moz-transform: translateY(4px);
+    -ms-transform: translateY(4px);
+    -o-transform: translateY(4px);
 }
 
 

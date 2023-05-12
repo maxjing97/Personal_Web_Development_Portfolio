@@ -12,6 +12,7 @@ search_bar.addEventListener('keyup', (e) => {
         displayResults(searchString); //passes in the function into the display results part
     }
     
+    
 });
 
 //function calls that adds calls function to display the research and to add key event listeners.
